@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Users List</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+
+<body>
+<h2>Users</h2>
+<table border="1">
+   <tr><th>ID</th><th>Name</th><th>Email</th><th>Password</th></tr>
+       <tr th:each="user,state : ${users}">
+           <td th:utext="${state.count}">ID</td>
+           <td th:utext="${user.userName}">Name</td>
+           <td th:utext="${user.email}">Email</td>
+           <td th:utext="${user.password}">Password</td>
+       </tr>
+</table>
+
+<br><br>
+
+<a href="/home">Go Back To Home</a>
+
+</body>
+</html>
+
