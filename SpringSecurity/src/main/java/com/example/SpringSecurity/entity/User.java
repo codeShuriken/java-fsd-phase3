@@ -29,11 +29,12 @@ public class User {
     
     public User() {}
 
-    public User(String userName, String email, String password) {
-		this.userName = userName;
-		this.email = email;
-		this.password = password;
-	}
+    public User(String userName, String email, String password, String roles) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
