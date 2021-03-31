@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Update Task Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+	<div class = "container">
+		<h2> Update Task </h2>
+		<br>
+		<form action="#" th:action="@{/updateTask}" th:object="${task}" method="POST">
+			<input type="hidden" th:field="*{id}">
+			<input type="text" th:field="*{name}" required
+			 		class="form-control mb-4 col-4" placeholder="Task Name">
+			
+			<textarea th:field="*{description}" required
+			 		class="form-control mb-4 col-4" rows="3" placeholder="Description"></textarea>
+			 		
+			 <input type="date" class="form-control mb-4 col-4" required
+                       placeholder="Task start"
+                       th:field="*{startDate}"/>
+
+		      <input type="date" class="form-control mb-4 col-4" required
+		                       placeholder="Task start"
+		                       th:field="*{endDate}"/>
+			 
+			 <select class="form-control  mb-4 col-4" th:field="*{severity}" required>
+			    <option value="Low">Low</option>
+			    <option value="Medium">Medium</option>
+			    <option value="High">High</option>
+ 			 </select>
+ 			 
+ 			 <button type="submit" class="btn btn-info col-2">Save</button>
+ 			 
+		</form>
+	</div>
+	
+	<br>
+	<div class="container">
+		<a th:href="@{/home}">Back to Home Page</a>
+	</div>
+	
+</body>
+</html>

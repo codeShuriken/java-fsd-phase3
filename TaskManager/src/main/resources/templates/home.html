@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Welcome Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 th:inline="text"> Welcome User, [[${user.username}]] </h1>
+    <br>
+	<h2>Tasks</h2>
+	<br>
+	
+	<a th:href="@{/showFormForAdd}" class="btn btn-primary btn-block" style="width:25%;">
+		Add Task
+	</a>	
+	
+	<br>
+	<table class="table table-bordered table-striped table-dark">
+	<thead class="thead-dark">
+		<tr>
+			<th>ID</th>
+			<th>Task Name</th>
+			<th>Description</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Severity</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="task,state : ${user.tasks}">
+           <td th:text="${state.count}" />
+           <td th:text="${task.name}" />
+           <td th:text="${task.description}" />
+           <td th:text="${task.startDate}" />
+           <td th:text="${task.endDate}" />
+           <td th:text="${task.severity}" />
+           <td>
+           	<a th:href="@{/showFormForUpdate(taskId=${task.id})}" class="btn btn-info btn-sm">Update</a>
+           	<a th:href="@{/delete(taskId=${task.id})}" class="btn btn-danger btn-sm"
+           	onclick="if (!(confirm('Are you sure?'))) return false;">Delete</a>		
+           </td>
+	     </tr>
+	</tbody>
+	</table>
+</div>
+	<br>
+	
+	<form class="form-signin" method="get" action="/logout">
+        <button class="btn btn-danger btn-block" type="submit" style="width:100%">Logout</button>
+    </form>
+   
+</body>
+</html>
